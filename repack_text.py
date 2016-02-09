@@ -110,7 +110,7 @@ def build_block(base_offset , string_list):
     buffer.seek(0,2)
     end = buffer.tell()
     buffer.seek(4)
-    buffer.write(struct.pack(">I" , end))
+    buffer.write(struct.pack(">I" , end  - 0x10))
     data = buffer.getvalue()
     if not len(data)%0x10 == 0:
         data += ("\xAB" * (0x10 - len(data)%0x10))
